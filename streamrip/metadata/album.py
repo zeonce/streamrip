@@ -304,7 +304,7 @@ class AlbumMetadata:
         _copyright = typed(resp.get("copyright", ""), str)
 
         artists = typed(resp.get("artists", []), list)
-        albumartist = ", ".join(a["name"] for a in artists)
+        albumartist = artists[0]["name"]
         if not albumartist:
             albumartist = typed(safe_get(resp, "artist", "name", default=""), str)
 
@@ -386,7 +386,7 @@ class AlbumMetadata:
 
         _copyright = typed(resp.get("copyright", ""), str)
         artists = typed(resp.get("artists", []), list)
-        albumartist = ", ".join(a["name"] for a in artists)
+        albumartist = artists[0]["name"]
         if not albumartist:
             albumartist = typed(
                 safe_get(resp, "artist", "name", default="Unknown Albumbartist"), str
